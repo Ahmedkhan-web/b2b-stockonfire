@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #F7F3EC;
+  }
+
+  body {
+    background-color: #F7F3EC;
+    color: #0F172A;
+    overflow-x: hidden;
+  }
+}
+
+/* ── Custom Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #F1F5F9; border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+::-webkit-scrollbar-thumb:active { background: #64748B; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Glassmorphism ────────────────────────────────────── */
+.glass-panel {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.glass-dark {
+  background: rgba(15,23,42,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ── Generic card transitions ─────────────────────────── */
+.transition-card { transition: all 0.25s cubic-bezier(0.16,1,0.3,1); }
+.transition-card:hover { transform: translateY(-4px); }
+
+.card-hover { transition: all 0.3s cubic-bezier(0.16,1,0.3,1); }
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -10px rgba(15,23,42,0.12);
+}
+
+/* ── Gradient text ────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #2563EB 0%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ══════════════════════════════════════════════════════
+   HERO SECTION  — all keyframes live here in global CSS
+   so they are available to plain class selectors
+════════════════════════════════════════════════════════ */
+
+/* 1. Keyframe definitions */
+@keyframes heroSlideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-12px); }
+}
+
+/* 2. Animation utility classes */
+.hero-slide-up {
+  opacity: 0;
+  animation: heroSlideUp 0.65s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.hero-fade-in {
+  opacity: 0;
+  animation: heroFadeIn 0.7s ease forwards;
+}
+.hero-float {
+  animation: heroFloat 5s ease-in-out infinite;
+}
+
+/* 3. Stagger delays */
+.hero-d0  { animation-delay: 0ms;   }
+.hero-d1  { animation-delay: 80ms;  }
+.hero-d2  { animation-delay: 160ms; }
+.hero-d3  { animation-delay: 260ms; }
+.hero-d4  { animation-delay: 360ms; }
+.hero-d5  { animation-delay: 460ms; }
+
+/* 4. Eyebrow red-bar decoration */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 3px;
+  background: #C8181E;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* 5. Product image blend */
+.hero-product-img {
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.10));
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* 6. Search bar pill */
+.hero-search-bar {
+  display: flex;
+  align-items: stretch;
+  background: #ffffff;
+  border: 1.5px solid #D9D2CA;
+  border-radius: 9999px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+.hero-search-bar:focus-within {
+  border-color: #C8181E;
+  box-shadow: 0 0 0 3px rgba(200,24,30,0.12), 0 2px 12px rgba(0,0,0,0.07);
+}
+
+/* 7. Red submit button */
+.hero-search-btn {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  margin: 5px;
+  border-radius: 9999px;
+  background: #C8181E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s, transform 0.12s;
+  cursor: pointer;
+  border: none;
+}
+.hero-search-btn:hover  { background: #A81216; }
+.hero-search-btn:active { transform: scale(0.93); }
+.hero-search-btn:focus-visible {
+  outline: 3px solid rgba(200,24,30,0.4);
+  outline-offset: 2px;
+}
+
+/* 8. Trust badge circle */
+.hero-trust-icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid #C8181E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #C8181E;
+  transition: background 0.18s, color 0.18s;
+}
+.hero-trust-item:hover .hero-trust-icon {
+  background: #C8181E;
+  color: #ffffff;
+}
+
+/* ── Hero grid responsive breakpoints ────────────────── */
+@media (min-width: 1024px) {
+  .hero-grid-container {
+    grid-template-columns: 55% 45% !important;
+    gap: 24px !important;
+    padding-top: 72px !important;
+    padding-bottom: 96px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-grid-container {
+    padding: 40px 20px 64px !important;
+  }
+}
