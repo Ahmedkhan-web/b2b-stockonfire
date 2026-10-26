@@ -28,7 +28,7 @@ export const AccountModal: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
-      <div 
+      <div
         onClick={(e) => e.stopPropagation()}
         className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-slate-200 relative overflow-hidden"
       >
@@ -108,22 +108,20 @@ export const AccountModal: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setRole('buyer')}
-                  className={`py-2 rounded-lg transition-all ${
-                    role === 'buyer' 
-                      ? 'bg-white text-slate-900 shadow-sm' 
+                  className={`py-2 rounded-lg transition-all ${role === 'buyer'
+                      ? 'bg-white text-slate-900 shadow-sm'
                       : 'text-slate-500 hover:text-slate-800'
-                  }`}
+                    }`}
                 >
                   Enterprise Buyer
                 </button>
                 <button
                   type="button"
                   onClick={() => setRole('supplier')}
-                  className={`py-2 rounded-lg transition-all ${
-                    role === 'supplier' 
-                      ? 'bg-white text-slate-900 shadow-sm' 
+                  className={`py-2 rounded-lg transition-all ${role === 'supplier'
+                      ? 'bg-white text-slate-900 shadow-sm'
                       : 'text-slate-500 hover:text-slate-800'
-                  }`}
+                    }`}
                 >
                   Verified Supplier
                 </button>
