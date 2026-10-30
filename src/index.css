@@ -77,6 +77,27 @@
   50%       { transform: translateY(-12px); }
 }
 
+/* Badge gentle bob animation */
+@keyframes heroBadgeBob {
+  0%   { transform: translateY(0px);  }
+  30%  { transform: translateY(-5px); }
+  60%  { transform: translateY(-2px); }
+  80%  { transform: translateY(-6px); }
+  100% { transform: translateY(0px);  }
+}
+
+/* Heading word reveal */
+@keyframes heroWordReveal {
+  from { opacity: 0; transform: translateY(40px) skewY(2deg); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0)    skewY(0deg); filter: blur(0);   }
+}
+
+/* Description soft reveal */
+@keyframes heroDescReveal {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
 /* 2. Animation utility classes */
 .hero-slide-up {
   opacity: 0;
@@ -88,6 +109,41 @@
 }
 .hero-float {
   animation: heroFloat 5s ease-in-out infinite;
+}
+
+/* Badge continuous bob — starts after initial slide-up */
+.hero-badge-bob {
+  animation:
+    heroSlideUp 0.65s cubic-bezier(0.22,1,0.36,1) forwards,
+    heroBadgeBob 3.6s cubic-bezier(0.45,0,0.55,1) 0.8s infinite;
+}
+
+/* Heading word reveal */
+.hero-word-reveal {
+  display: inline-block;
+  opacity: 0;
+  animation: heroWordReveal 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+/* Description reveal */
+.hero-desc-reveal {
+  opacity: 0;
+  animation: heroDescReveal 0.6s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+/* Reduced-motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide-up,
+  .hero-fade-in,
+  .hero-badge-bob,
+  .hero-word-reveal,
+  .hero-desc-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .hero-float { animation: none !important; }
 }
 
 /* 3. Stagger delays */
