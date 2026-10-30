@@ -7,19 +7,59 @@
     <title>StockOnFire | Industrial Supplies Marketplace</title>
     <meta name="description" content="Global B2B Industrial Marketplace. Source certified automation, electrical, CCTV security, fire safety equipment, pumps, and industrial tools from verified suppliers." />
     <meta name="keywords" content="StockOnFire, industrial marketplace, b2b marketplace, fire safety, cctv security, industrial equipment, automation, switchgear" />
-    
+
     <!-- Open Graph / Meta -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="StockOnFire | Industrial Supplies Marketplace" />
     <meta property="og:description" content="Find, compare and buy high-quality industrial products from verified suppliers — all in one place." />
     <meta property="og:site_name" content="StockOnFire" />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-B94ieRtH.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Ccg2riW2.css">
+    <!--
+      ═══════════════════════════════════════════════════════
+      CRITICAL RESOURCE HINTS
+      Order matters: DNS → preconnect → preload LCP image → fonts
+      ═══════════════════════════════════════════════════════
+    -->
+
+    <!-- 1. Hero image preload (LCP asset — highest fetch priority) -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero-products.webp"
+      type="image/webp"
+      fetchpriority="high"
+      media="(min-width: 1024px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero-products-sm.webp"
+      type="image/webp"
+      fetchpriority="high"
+      media="(max-width: 1023px)"
+    />
+
+    <!-- 2. Google Fonts — preconnect first, then non-blocking load -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      Load only the weights actually used (400, 600, 700, 800).
+      JetBrains Mono is not visibly used in any component — omitted.
+      display=swap prevents invisible text during font load.
+    -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" />
+    </noscript>
+    <script type="module" crossorigin src="/assets/index-1O5lSmoS.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-lucide-_eZapkYm.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-react-D1INmxo0.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-FowyQ9KC.css">
   </head>
   <body class="bg-[#F7F3EC] text-slate-800 antialiased selection:bg-orange-500 selection:text-white">
     <div id="root"></div>

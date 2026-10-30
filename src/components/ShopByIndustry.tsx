@@ -13,7 +13,7 @@ export const ShopByIndustry: React.FC = () => {
       categorySlug: 'fire-safety-equipment',
       skuCount: '6,400+ SKUs',
       highlights: 'Explosion-proof valves, flame arrestors, high-pressure piping & Class 1 Div 1 instrumentation.',
-      image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&auto=format&fit=crop&q=80'
+      image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&auto=format&fit=crop&q=80',
     },
     {
       id: 'ind-automation',
@@ -22,7 +22,7 @@ export const ShopByIndustry: React.FC = () => {
       categorySlug: 'industrial-automation',
       skuCount: '12,200+ SKUs',
       highlights: 'PLCs, robotics, servo drives, conveyor drives, machine vision & distributed I/O systems.',
-      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80'
+      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80',
     },
     {
       id: 'ind-water',
@@ -31,7 +31,7 @@ export const ShopByIndustry: React.FC = () => {
       categorySlug: 'water-treatment',
       skuCount: '4,800+ SKUs',
       highlights: 'Commercial RO membranes, vertical multistage pumps, magnetic flowmeters & dosing systems.',
-      image: 'https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?w=500&auto=format&fit=crop&q=80'
+      image: 'https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?w=500&auto=format&fit=crop&q=80',
     },
     {
       id: 'ind-aerospace',
@@ -40,7 +40,7 @@ export const ShopByIndustry: React.FC = () => {
       categorySlug: 'sensors-controls',
       skuCount: '3,100+ SKUs',
       highlights: 'Mil-spec connectors, precision torque tools, cryogenic sensors & thermal imaging.',
-      image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&auto=format&fit=crop&q=80'
+      image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&auto=format&fit=crop&q=80',
     },
     {
       id: 'ind-construction',
@@ -49,76 +49,73 @@ export const ShopByIndustry: React.FC = () => {
       categorySlug: 'electrical-equipment',
       skuCount: '8,900+ SKUs',
       highlights: 'High-voltage switchgear, hydraulic breakers, fall arrest gear & heavy cable trays.',
-      image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=500&auto=format&fit=crop&q=80'
+      image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=500&auto=format&fit=crop&q=80',
     },
     {
       id: 'ind-pharma',
-      name: 'Pharma & Cleanroom Processing',
+      name: 'Pharma & Cleanroom',
       icon: Pill,
       categorySlug: 'safety-equipment',
       skuCount: '2,900+ SKUs',
       highlights: 'PAPR respiratory systems, sanitary diaphragm valves, clean air blowers & passivators.',
-      image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=500&auto=format&fit=crop&q=80'
-    }
+      image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=500&auto=format&fit=crop&q=80',
+    },
   ];
 
   return (
-    <section className="py-20 bg-[#F8FAFC]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-white">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">
+
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 text-white text-xs font-bold uppercase tracking-wider mb-5 shadow-lg shadow-blue-600/20">
-            <Factory className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F7F3EC] border border-[#E8E2D7] text-xs font-bold text-[#4E5463] uppercase tracking-wider mb-3">
+            <Factory className="w-3.5 h-3.5 text-[#C8181E]" />
             <span>Targeted Industry Solutions</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-[2.2rem] font-black text-[#111624] tracking-tight leading-tight mb-3">
             Procure Tailored Equipment by Industry
           </h2>
-          <p className="text-lg text-slate-600 mt-3">
-            Every sector requires specialized safety certifications, material compliance, and tolerance standards.
+          <p className="text-[15px] text-[#4E5463] leading-relaxed">
+            Every sector requires specialised safety certifications, material compliance, and tolerance standards.
           </p>
         </div>
 
-        {/* Modern Industry Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {industries.map((ind) => {
             const Icon = ind.icon;
             return (
               <div
                 key={ind.id}
-                onClick={() => {
-                  setSelectedCategoryFilter(ind.categorySlug);
-                  setActivePage('catalog');
-                }}
-                className="group relative rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-card-hover transition-all duration-300 cursor-pointer flex flex-col h-80"
+                onClick={() => { setSelectedCategoryFilter(ind.categorySlug); setActivePage('catalog'); }}
+                className="group relative rounded-2xl overflow-hidden border border-[#E8E2D7] shadow-[0_1px_4px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)] transition-all duration-300 cursor-pointer h-72"
               >
-                <div 
-                  className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
+                <div
+                  className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-700"
                   style={{ backgroundImage: `url(${ind.image})` }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/90 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111624] via-[#111624]/80 to-[#111624]/20" />
 
-                <div className="relative z-10 p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 backdrop-blur-md flex items-center justify-center text-white border border-white/20 group-hover:scale-110 transition-transform">
-                      <Icon className="w-6 h-6" />
+                <div className="relative z-10 p-5 h-full flex flex-col justify-between">
+                  <div className="flex items-center justify-between">
+                    <div className="w-10 h-10 rounded-xl bg-[#C8181E] flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <span className="px-3 py-1 rounded-lg bg-white/10 backdrop-blur-md text-white text-xs font-mono font-bold border border-white/10">
+                    <span className="px-2.5 py-1 rounded-lg bg-white/10 backdrop-blur-md text-white text-[10px] font-mono font-bold border border-white/10">
                       {ind.skuCount}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors mb-2 flex items-center justify-between">
-                    <span>{ind.name}</span>
-                    <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-blue-400 group-hover:translate-x-1 transition-transform" />
-                  </h3>
-                  <p className="text-sm text-slate-300 line-clamp-2 leading-relaxed">
-                    {ind.highlights}
-                  </p>
-                </div>
-
-                <div className="mt-auto p-6 pt-0">
-                  <div className="w-full h-1.5 bg-slate-800/50 rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-blue-500 to-blue-600 w-2/3 rounded-full group-hover:w-full transition-all duration-500" />
+                  <div>
+                    <h3 className="text-lg font-bold text-white group-hover:text-[#F87171] transition-colors mb-1.5 flex items-center justify-between">
+                      <span>{ind.name}</span>
+                      <ArrowRight className="w-4 h-4 text-[#A8B4C2] group-hover:text-[#F87171] group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                    </h3>
+                    <p className="text-xs text-[#A8B4C2] line-clamp-2 leading-relaxed">
+                      {ind.highlights}
+                    </p>
+                    {/* Progress bar */}
+                    <div className="mt-3 w-full h-0.5 bg-white/10 rounded-full overflow-hidden">
+                      <div className="h-full bg-[#C8181E] w-1/2 rounded-full group-hover:w-full transition-all duration-500" />
+                    </div>
                   </div>
                 </div>
               </div>

@@ -5,81 +5,68 @@ import { useShop } from '../context/ShopContext';
 
 export const CategoryCarousel: React.FC = () => {
   const { navigateToCategory } = useShop();
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = direction === 'left' ? -360 : 360;
-      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: direction === 'left' ? -360 : 360, behavior: 'smooth' });
     }
   };
 
   return (
-    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 sm:-mt-16 z-20">
-      {/* Modern White Container */}
-      <div className="bg-white rounded-3xl shadow-2xl border border-slate-200/80 p-5 sm:p-8 relative overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute -right-20 -top-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -left-20 -bottom-20 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+    <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 -mt-12 sm:-mt-16 z-20">
+      <div className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] border border-[#E8E2D7] p-5 sm:p-8 relative overflow-hidden">
 
-        {/* Modern Navigation Arrows */}
         <button
           onClick={() => scroll('left')}
-          className="absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-2 border-slate-200 shadow-xl shadow-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-300 flex items-center justify-center z-10 transition-all hover:scale-110 active:scale-95"
-          aria-label="Previous categories"
+          className="absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-[#E8E2D7] shadow-md text-[#4E5463] hover:text-[#C8181E] hover:border-[#C8181E]/40 flex items-center justify-center z-10 transition-all"
+          aria-label="Previous"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
 
         <button
           onClick={() => scroll('right')}
-          className="absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-2 border-slate-200 shadow-xl shadow-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-300 flex items-center justify-center z-10 transition-all hover:scale-110 active:scale-95"
-          aria-label="Next categories"
+          className="absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-[#E8E2D7] shadow-md text-[#4E5463] hover:text-[#C8181E] hover:border-[#C8181E]/40 flex items-center justify-center z-10 transition-all"
+          aria-label="Next"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
 
-        {/* Horizontal Scrollable Row */}
-        <div 
-          ref={scrollContainerRef}
-          className="flex items-center gap-4 sm:gap-6 overflow-x-auto no-scrollbar scroll-smooth py-2"
+        <div
+          ref={scrollRef}
+          className="flex items-center gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth py-2"
         >
           {CATEGORIES.map((cat) => (
             <div
               key={cat.id}
               onClick={() => navigateToCategory(cat.slug)}
-              className="flex-shrink-0 w-40 sm:w-44 flex flex-col items-center text-center cursor-pointer group select-none p-3 rounded-2xl transition-all duration-300 hover:bg-gradient-to-br hover:from-blue-50 to-blue-100/50 hover:shadow-lg"
+              className="flex-shrink-0 w-36 sm:w-40 flex flex-col items-center text-center cursor-pointer group select-none p-3 rounded-2xl transition-all duration-300 hover:bg-[#F7F3EC]"
             >
-              {/* Modern Product Thumbnail */}
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl flex items-center justify-center p-3 mb-4 bg-gradient-to-br from-slate-50 to-white group-hover:from-blue-100 group-hover:to-blue-50 transition-all duration-300 shadow-md group-hover:shadow-xl group-hover:scale-105">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl flex items-center justify-center p-2.5 mb-3 bg-[#F7F3EC] group-hover:bg-white border border-transparent group-hover:border-[#C8181E]/20 transition-all duration-300 group-hover:shadow-md">
                 <img
                   src={cat.iconImage}
                   alt={cat.name}
-                  className="w-full h-full object-cover rounded-xl"
+                  className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
               </div>
 
-              {/* Category Name */}
-              <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-700 transition-colors line-clamp-2 h-12 flex items-center justify-center leading-snug mb-2">
+              <h3 className="text-xs font-bold text-[#111624] group-hover:text-[#C8181E] transition-colors line-clamp-2 h-9 flex items-center justify-center leading-snug mb-1.5">
                 {cat.name}
               </h3>
 
-              {/* Modern Item Count Pill */}
-              <div className="mt-2">
-                <span className="inline-block px-3 py-1 rounded-full bg-slate-100 text-slate-600 font-mono text-xs font-semibold border border-slate-200 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all">
-                  {cat.itemCount.toLocaleString().replace(/,/g, ' ')}
-                </span>
-              </div>
+              <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#F7F3EC] text-[#7A8092] font-mono text-[10px] font-semibold border border-[#E8E2D7] group-hover:bg-[#C8181E] group-hover:text-white group-hover:border-[#C8181E] transition-all">
+                {cat.itemCount.toLocaleString().replace(/,/g, ' ')}
+              </span>
             </div>
           ))}
         </div>
 
-        {/* Modern CTA at bottom */}
-        <div className="mt-8 text-center">
+        <div className="mt-6 text-center">
           <button
             onClick={() => navigateToCategory(CATEGORIES[0].slug)}
-            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-bold text-sm transition-colors"
+            className="inline-flex items-center gap-1.5 text-[#C8181E] hover:text-[#A81216] font-bold text-sm transition-colors"
           >
             <span>Browse All Categories</span>
             <ChevronRight className="w-4 h-4" />

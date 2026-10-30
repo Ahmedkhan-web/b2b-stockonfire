@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Layers, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { CATEGORIES } from '../data/categories';
 import { useShop } from '../context/ShopContext';
 
@@ -8,73 +8,68 @@ export const PopularCategories: React.FC = () => {
 
   return (
     <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">
+
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
-                <Layers className="w-4 h-4" />
-              </div>
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-600">Sourcing Directory</span>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="w-1 h-6 rounded-full bg-[#C8181E]" aria-hidden="true" />
+              <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#C8181E]">Sourcing Directory</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-3xl sm:text-[2.2rem] font-black text-[#111624] tracking-tight leading-tight">
               Popular Product Categories
             </h2>
-            <p className="text-slate-600 mt-3 text-lg max-w-xl">
-              Quickly browse specialized industrial equipment across certified disciplines.
+            <p className="text-[#4E5463] mt-2.5 text-[15px] max-w-xl leading-relaxed">
+              Quickly browse specialised industrial equipment across certified disciplines.
             </p>
           </div>
 
           <button
             onClick={() => setActivePage('catalog')}
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white border-2 border-slate-200 hover:border-blue-300 text-slate-800 font-bold text-base shadow-sm hover:shadow-lg transition-all"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white border border-[#E8E2D7] hover:border-[#C8181E]/40 text-[#111624] font-bold text-sm shadow-sm hover:shadow transition-all group flex-shrink-0"
           >
             <span>All Categories ({CATEGORIES.length})</span>
-            <ArrowRight className="w-5 h-5 text-blue-600" />
+            <ArrowRight className="w-4 h-4 text-[#C8181E] group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
-        {/* Modern Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {CATEGORIES.slice(0, 8).map((cat) => (
             <div
               key={cat.id}
               onClick={() => navigateToCategory(cat.slug)}
-              className="group bg-white rounded-2xl border border-slate-200 hover:border-blue-300 shadow-sm hover:shadow-card-hover transition-all duration-300 p-6 flex flex-col justify-between cursor-pointer"
+              className="group bg-[#F7F3EC] hover:bg-white rounded-2xl border border-[#E8E2D7] hover:border-[#C8181E]/30 shadow-[0_1px_4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-all duration-300 p-5 flex flex-col justify-between cursor-pointer"
             >
               <div>
-                <div className="flex items-start justify-between gap-3 mb-5">
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden flex-shrink-0 border border-slate-200/60 p-1.5 group-hover:border-blue-200 transition-colors">
+                <div className="flex items-start justify-between gap-3 mb-4">
+                  <div className="w-14 h-14 rounded-xl bg-white overflow-hidden flex-shrink-0 border border-[#E8E2D7] p-1.5 group-hover:border-[#C8181E]/20 transition-colors shadow-sm">
                     <img
                       src={cat.iconImage}
                       alt={cat.name}
-                      className="w-full h-full object-cover rounded-lg group-hover:scale-110 transition-transform duration-300"
+                      className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                       decoding="async"
                     />
                   </div>
-                  <span className="px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 font-mono text-xs font-bold border border-blue-100 group-hover:bg-blue-100 transition-colors">
+                  <span className="px-2.5 py-1 rounded-lg bg-white text-[#C8181E] font-mono text-[10px] font-bold border border-[#E8E2D7] group-hover:bg-[#C8181E] group-hover:text-white group-hover:border-[#C8181E] transition-all">
                     {cat.itemCount.toLocaleString()} SKUs
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-700 transition-colors mb-3 flex items-center justify-between">
+                <h3 className="text-base font-bold text-[#111624] group-hover:text-[#C8181E] transition-colors mb-2 flex items-center justify-between">
                   <span>{cat.name}</span>
-                  <ArrowUpRight className="w-5 h-5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  <ArrowUpRight className="w-4 h-4 text-[#DFD7CB] group-hover:text-[#C8181E] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform flex-shrink-0" />
                 </h3>
 
-                <p className="text-sm text-slate-600 line-clamp-2 mb-5 leading-relaxed">
+                <p className="text-xs text-[#7A8092] line-clamp-2 mb-4 leading-relaxed">
                   {cat.description}
                 </p>
 
                 {cat.popularSubcategories && (
-                  <div className="space-y-1.5 pt-3 border-t border-slate-100">
+                  <div className="space-y-1 pt-3 border-t border-[#E8E2D7]">
                     {cat.popularSubcategories.slice(0, 2).map((sub, idx) => (
-                      <div
-                        key={idx}
-                        className="text-xs text-slate-600 hover:text-blue-600 flex items-center gap-1.5 transition-colors"
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-blue-500" />
+                      <div key={idx} className="text-[11px] text-[#7A8092] flex items-center gap-1.5">
+                        <span className="w-1 h-1 rounded-full bg-[#DFD7CB] group-hover:bg-[#C8181E] transition-colors flex-shrink-0" />
                         <span className="truncate">{sub}</span>
                       </div>
                     ))}
@@ -82,9 +77,9 @@ export const PopularCategories: React.FC = () => {
                 )}
               </div>
 
-              <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-bold text-slate-700 group-hover:text-blue-600">
+              <div className="mt-4 pt-3 border-t border-[#E8E2D7] flex items-center justify-between text-xs font-bold text-[#7A8092] group-hover:text-[#C8181E] transition-colors">
                 <span>Explore Products</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </div>
             </div>
           ))}

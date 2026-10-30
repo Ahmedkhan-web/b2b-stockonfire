@@ -15,6 +15,7 @@ import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { BecomeSupplierPage } from './pages/BecomeSupplierPage';
 import { CheckCircle2 } from 'lucide-react';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
 const MainLayout: React.FC = () => {
   const { activePage, toastMessage } = useShop();
@@ -68,6 +69,9 @@ const MainLayout: React.FC = () => {
           <span>{toastMessage}</span>
         </div>
       )}
+
+      {/* 6. Global WhatsApp Button */}
+      <WhatsAppButton />
     </div>
   );
 };
