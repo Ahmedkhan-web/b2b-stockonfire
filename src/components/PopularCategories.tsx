@@ -49,6 +49,8 @@ export const PopularCategories: React.FC = () => {
                       src={cat.iconImage}
                       alt={cat.name}
                       className="w-full h-full object-cover rounded-lg group-hover:scale-110 transition-transform duration-300"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <span className="px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 font-mono text-xs font-bold border border-blue-100 group-hover:bg-blue-100 transition-colors">
